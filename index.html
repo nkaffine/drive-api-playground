@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom Drive</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="main.css">
+        <script src="home.js"></script>
+        <script src="drive.js"></script>
+        <script src="analyticsManager.js"></script>
+        <script src="node.js"></script>
+    </head>
+    <body>
+        <!--Nav bar-->
+        <ul id="nav">
+            <li><a id="driveItem">Drive</a></li>
+            <span id="homes"></span>
+            <li style="float: right"><a style="display: none" id="signout_button">Sign Out</a></li>
+            <li style="float: right"><a style="display: none" id="authorize_button">Sign In</a></li>
+            <li style="float: right"><a id="newHome" style="cursor: pointer">New Home</a></li>
+        </ul>
+        <!-- Add to home stuff -->
+        <div id='addToHome' style="display: none">
+            <div>
+                <h1>Select Location in Home</h1>
+                <h2 id="addToHomePath">My Home</h2>
+                <button id="addToCurrentHomeButton">Add to Current Folder</button>
+                <table>
+                    <thead>
+                        <th></th>
+                        <th style="text-align: left;">Name</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button onclick="hideAddToHome()">Cancel</button>
+            </div>
+        </div>
+        <!-- New Home stuff -->
+        <div id="newHomePopup" style="display: none">
+            <h1>Add New Home</h1>
+            <div>
+                <div style="width: 50%; float: left">
+                    <label for="newHomeName">Home Name</label>
+                    <input id="newHomeName" type="text">
+                </div>
+                <div style="width: 50%; float: right;">
+                    <button style="margin-top: 9%;" id="newHomeButton">Create New Home</button>
+                </div>
+                <div><button onclick="hidNewHomePopup()">Cancel</button></div>
+            </div>
+        </div>
+
+        <!-- Add buttons to initiate auth sequence and sign out-->
+        <pre id="content" style="white-space: pre-wrap"></pre>
+        <script src="main.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js"
+                onload="this.onload=function(){};handleClientLoad()"
+                onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+
+        <div id="drive">
+            <h1>Drive</h1>
+            <h2 id="driveCurrentPath"></h2>
+            <table id="fileBrowser">
+                <thead>
+                <th></th>
+                <th style="text-align: left;">Name</th>
+                <th></th>
+                </thead>
+                <tbody>
+                    <tr id="notSignedIn" style="display: none;"><td></td><td>Sign in to view files</td></tr>
+                </tbody>
+            </table>
+            <div id="driveSpinner" class="loader"></div>
+        </div>
+        <!-- Home Stuff -->
+        <div style="display: none" id="home">
+            <h1 id="homeName"></h1>
+            <h2 id="homePath"></h2>
+            <div>
+                <input id="homeFolderName" type="text">
+                <button id="createHomeFolder">Create Folder</button>
+            </div>
+            <table id="homeBrowser">
+                <thead>
+                <th></th>
+                <th style="text-align: left;">Name</th>
+                <th></th>
+                <th></th>
+                <th>Drive Name</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div id='homeSpinner' class="loader"></div>
+        </div>
+    </body>
+</html>
